@@ -28,7 +28,7 @@ clear:
 	@rm -rf $(ARTIFACT_DIR)
 
 create_output_dir:
-	@mkdir -p $(OUTPUT_DIR)
+#	@mkdir -p $(OUTPUT_DIR)
 
 create_artifacts:
 	@mkdir -p $(ARTIFACT_DIR)
@@ -57,4 +57,4 @@ docker-create:
 	docker build -t $(DOCKER_IMAGE_NAME) .
 
 docker-build:
-	docker run --rm -ti -v ${PWD}:/build:Z $(DOCKER_IMAGE_NAME) sh -c "make clean clear build clean"
+	docker run --rm -ti -v .:/build:Z $(DOCKER_IMAGE_ALL) sh -c "make artifacts"

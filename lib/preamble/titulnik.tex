@@ -1,5 +1,5 @@
 \newcommand{\titulnik}{
-    \begin{titlepage}
+    \small\begin{titlepage}
         \pagestyle{empty}
         \begin{center}
             \textbf{Министерство науки высшего образования Российской Федерации}
@@ -19,29 +19,32 @@
         \vfill
 
         \begin{center}
-            \textbf{\MakeUppercase{\@title}}
-            
-           по дисциплине <<\i@discipline>>
+            \textbf{\MakeUppercase{ОТЧЕТ}}
 
-            \ifthenelse{\not\equal{\i@variant}{\@empty}}{Вариант \i@variant}{}%
-
-            \hspace{20mm}
+            \textit{по научно-исследовательской работе}
+            \hspace{10mm}
         \end{center}
-        \vfill
-        \hfill
-        \begin{minipage}{.4\textwidth}
-            Выполнил студент:\\[2mm]
-            \@author\\
-            группа: \i@edugroup\\[5mm]
+        \begin{flushleft}
+            Тема задания: <<\@title>>
+            
+            \ 
 
-            Преподаватель:\\[2mm]
-            \i@teacher
-        \end{minipage}%
+            Обучающийся: \@author, \i@edugroup
+
+            \ 
+
+            Руководитель практики: \i@teacher
+        \end{flushleft}
         \vfill
+        % \hfill
+        % \begin{minipage}{.4\textwidth}
+        %     Дата \i@currdate
+        % \end{minipage}%
+        % \vfill
         \begin{center}
             \i@city, \@date \ г.
         \end{center}
     \end{titlepage}
     \pagestyle{fancy}
-    \clearpage
+    \normalsize\clearpage
 }

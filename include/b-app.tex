@@ -1,0 +1,170 @@
+\appsection{Приложение Б} \hypertarget{app-b}{\label{app-b}}
+
+\textbf{Учебный практикум}
+
+\annsection{Практика: }{Знакомство с Proxmox. Управление виртуальными машинами}
+Каждую часть и этап необходимо подтверждать с помощью скриншотов или записанного видео.
+
+\annsubsection{Часть 1.}{Установка Proxmox}
+Цель: познакомиться с установкой Proxmox.
+
+Задание:
+\begin{enumerate}[]
+    \item Скачать с официального сайта дистрибутив
+    \item Произвести установку на виртуальную машину.
+    \item Предоставить скриншоты о процессе установки
+    \item Войти в систему Proxmox через другим адресным пространством, что и основной интерфейс.
+    \item Настроить NAT для этого интерфейса
+\end{enumerate}
+
+\annsubsection{Часть 2.}{Создание виртуальной машины}
+
+Цель: научиться создавать виртуальные машины в Proxmox
+
+Задание:
+\begin{enumerate}
+    \item Скачать дистрибутив Debian 11.
+    \item Загрузить дистрибутив в локальное хранилище Proxmox
+    \item Создать виртуальную машину:
+    \begin{itemize}
+        \item Название: фамилия\_имя в латинице
+        \item Disk size (GiB): 16
+        \item Sockets: 1
+        \item Cores: 1
+        \item Memory (MiB): 4096
+        \item Brige: vmbr0
+    \end{itemize}
+    \item Произвести запуск созданной виртуальной машины.
+    \item С помощью консоли Proxmox произвести установку ОС
+    \item Вручную сделать статичный IP адрес в ОС
+    \item Проверить работу сети и доступа в интернет
+\end{enumerate}
+
+\annsubsection{Часть 3.}{Подключение к виртуальной машине.}
+
+Цель: настроить на виртуальной машине удаленное подключение по протоколу SSH
+
+Задание:
+\begin{enumerate}
+    \item Войти в консоль виртуальной машины Proxmox
+    \item Войти в ОС из-под root пользователя
+    \item Произвести установку пакета ssh
+    \item Из хост-системы произвести подключение к виртуальной машине
+\end{enumerate}
+
+\annsubsection{Часть 4.}{Установка Nextcloud}
+
+Цель: установить Nextcloud
+
+Задание:
+\begin{enumerate}
+    \item Скачать архив с дистрибутивом Nextcloud на виртуальную машину
+    \item Установить необходимые пакеты для LAMP стека и для Nextcloud 
+    \item В СУБД MySQL/MariaDB создать пользователя с паролем и отдельную БД.
+    \item Для Apache произвести настройку для Nextcloud
+    \item Включить сайт apache
+    \item Войти на сайт Nextcloud: http://<ip-address>[:<port>]/
+    \item Следовать установщику. В случае ошибок - исправлять и заново производить установку
+    \item После установки:
+    \begin{enumerate} 
+        \item Создать пользователя
+        \item Войти под ним
+        \item Загрузить любой файл
+        \item Убедиться, что файл загрузился
+        \item Скачать файл обратно
+    \end{enumerate}
+\end{enumerate}
+
+\annsection{Практика: }{Знакомство с Docker. Управление контейнерами}
+
+\annsubsection{Часть 1.}{Установка Docker}
+
+Цель: установить docker на целевой или гостевой ОС
+
+Задание:
+\begin{enumerate}
+    \item Установить Docker штатными средствами: https://docs.docker.com/engine/install/
+    \item Проверить работу Docker при помощи команды: docker –version
+    \item Проверить корректность запуска docker image: docker run hello-world
+\end{enumerate}
+
+\annsubsection{Часть 2.}{Написание Dockerfile}
+
+Цель: Изучить возможности написания Docker image при помощи Dockerfile
+
+Задание:
+\begin{enumerate}
+    \item Изучить Reference manual по Dockerfile
+    \item Написать простейший image: 
+    \begin{itemize}
+        \item выводить страницу hello.html
+        \item в hello.html находится ваше ФИО и группа
+    \end{itemize}
+    \item Файл hello.html должен находится в volume
+    \item Собрать образ
+    \item Запустить образ с пробросом порта
+    \item Проверить работу образа: curl http://localhost:<port>/hello.html 
+\end{enumerate}
+
+\annsubsection{Часть 3.}{Параметры запуска образов}
+
+Цель: Изучить команды docker
+
+Задание:
+\begin{enumerate}
+    \item Образ, собранный в предыдущей части запустить на другом порту. Проверить работу
+    \item Тот же образ запустить с другим содержимым volume
+    \item Пересобрать образ - убрать volume, файл hello.html копировать в слой образа
+    \item Запушить образ в hub.docker.com
+    \item Добавить к собранному образу новый тег.
+\end{enumerate}
+
+\annsection{Практика:}{Знакомство с K8S. Развертывание облачных сервисов}
+
+\annsubsection{Часть 1.}{Установка K8S}
+
+Цель: Установить на целевую ОС K8S
+
+Задание:
+\begin{enumerate}
+    \item Установить K8S
+    \item Для Windows: можно использовать Docker Desktop с включенной поддержкой Kubernetes
+    \item Для Linux: использовать minikube или другие аналоги
+    \item Проверить работу K8S. В качестве показателя работоспособности кластера использовать команду kubectl cluster-info
+\end{enumerate}
+
+\annsubsection{Часть 2.}{Создание манифеста}
+
+Цель: Изучить правила составления манифестов
+
+Задание:
+\begin{enumerate}
+    \item Изучить Reference manual по манифестам Kubernetes
+    \item Составить манифест Deployments для образа, созданного ранее
+\end{enumerate}
+
+\annsubsection{Часть 3.}{Деплой манифеста и проверка работы}
+
+Цель: Научиться использовать консольную утилиту для работы с кластером
+
+Задание:
+\begin{enumerate}
+    \item Произвести применение манифеста в кластере
+    \item Проверить работу запущенного Deployments
+    \begin{itemize}
+        \item С помощью kubectl describe deployment <название>
+        \item С помощью kubectl port-forward --address 0.0.0.0 deployment/<название> <port>:<port> и  curl http://127.0.0.1:<port>/hello.html
+    \end{itemize}
+\end{enumerate}
+
+\annsubsection{Часть 4.}{Параметры подов в манифесте}
+
+Цель: Изучить другие возможности управления объектами K8S
+
+Задание:
+\begin{enumerate}
+    \item Для созданного Deployments добавить значение по умолчанию количества реплик = 2
+    \item Для созданного Deployments добавить пробу/пробы
+\end{enumerate}
+
+\clearpage
