@@ -28,7 +28,7 @@ clear:
 	@rm -rf $(ARTIFACT_DIR)
 
 create_output_dir:
-#	@mkdir -p $(OUTPUT_DIR)
+	@mkdir -p $(OUTPUT_DIR)
 
 create_artifacts:
 	@mkdir -p $(ARTIFACT_DIR)
